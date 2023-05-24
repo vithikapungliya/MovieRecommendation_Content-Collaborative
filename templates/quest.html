@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Questionare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .question-container {
+            margin-left: 38%;
+            color:white;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
+            color:white;
+        }
+
+        select {
+            width: 24rem;
+            
+        }
+        label{
+            color:black;
+        }
+        .multiselect-dropdown span.optext {
+            background-color: black;
+            padding: 1px 0.75em;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+          
+          li a:hover {
+            background-color: #111;
+          }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a class="navbar-brand" href="{% url 'home' %}">Cinema Place</a></li>
+        
+        <li><a href="{% url 'playlist' %}">&nbsp; Playlist</a></li>
+        <li><a href="{% url 'questionnaire_input' %}">&nbsp; Questionnaire</a></li>
+      </ul>
+    <h1 class="center">Questionare</h1>
+    <br /><br />
+    <div class="question-container">
+        <form action="questionnaire_input" method="post">
+        {% csrf_token %}
+        <div>What do you prefer watching on the weekends?</div>
+        <br />
+        <select name="q1" id="q1" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+
+        <br /><br />
+        <div>What’ s your favorite weekday genre?</div>
+        <br />
+        <select name="q2" id="q2" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+
+        <br /><br />
+        <div>What’ s your go to genre for when you are happy ?</div>
+        <br />
+        <select name="q3" id="q3" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+
+        <br /><br />
+        <div>What’ s your go to genre for when you are sad?</div>
+        <br />
+        <select name="q4" id="q4" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+
+        <br /><br />
+        <div>What do you watch when your bored or tired?</div>
+        <br />
+        <select name="q5" id="q5" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+
+        <br /><br />
+        <div>What genre inspires you the most?</div>
+        <br />
+        <select name="q6" id="q6" multiple multiselect-hide-x="true" required>
+            <option value=Adventure>Adventure</option>
+            <option value=Animation>Animation</option>
+            <option value=Children>Children </option>
+            <option value=Comedy>Comedy</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Romance>Romance</option>
+            <option value=Crime>Crime</option>
+            <option value=Thriller>Thriller</option>
+            <option value=Action>Action</option>
+            <option value=Horror>Horror</option>
+            <option value=Drama>Drama</option>
+            <option value=Sci-Fi>Sci-Fi</option>
+            <option value=IMAX>IMAX</option>
+            <option value=Mystery>Mystery</option>
+            <option value=Musical>Musical</option>
+            <option value=Documentry>Documentry</option>
+            <option value=War>War</option>
+            <option value=Fantasy>Fantasy</option>
+            <option value=Western>Western</option>
+        </select>
+    </div>
+    <br /><br />
+    <div class="btn-container">
+        <input type="submit" value="Select">
+
+    </div>
+</form>
+</body>
+<script>
+
+</script>
+<script src="{% static "js/multiselect-dropdown.js" %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
+
+</html>

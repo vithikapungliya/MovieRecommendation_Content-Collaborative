@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+{% load static %}
+{% comment %} {% load staticfiles %}
+{% load crispy_forms_tags %} {% endcomment %}
+<html lang= "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="{%  static 'css/loginform.css' %}"/> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+        <title>Cinephilic Login</title>
+             
+    </head>
+    <body >
+        <div class="container" style="align-items:center">
+            <div class="name">  
+            </div>
+            <div class="content-box">
+                <div class="content-main">
+                    <div class="login-form">
+                        <h1>Cinephilic Login</h1>
+                        <h4>New User? <a href="signup">Register Here!</a></h4><br>
+                         <form action="{% url 'Login' %} " method="POST">
+                            {% csrf_token %}
+                            <label for="username">Username:</label>
+                            <input type="username" name="username" placeholder="Enter Username">
+                            <br><br>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password"><br>
+                        <input type="submit" class="btn-primary" value="Log in">
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+       </div>
+    </body>   
+    <style> 
+                body  
+                {  
+                    background-image:url("https://media.istockphoto.com/id/1128972831/photo/colorful-film-frames.jpg?s=612x612&w=0&k=20&c=s91xVkTMGGWI79EQJF70hhChRUJ1CVq9V5Qh7MUlyzw="); 
+                    background-repeat: no-repeat; 
+                    max_width=100%;
+                    max_height=100%;
+                    background-size: cover;
+                    position: relative;
+                } 
+            
+    </style>  
+</html>

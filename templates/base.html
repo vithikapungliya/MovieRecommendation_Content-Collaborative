@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}Movies{% endblock title %}</title>
+    {% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' >
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{% static "css/base.css" %}' />
+
+    <style type="text/css">
+        .thumbnail p, .thumbnail h4 {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            }
+        .star-rating {
+            line-height:32px;
+            font-size:1.25em;
+            }
+
+.star-rating .fa-star{color: yellow;}
+        
+    </style>
+    <style>
+        .dropbtn {
+          background-color: #222;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content input{
+            background-color: #ffffff;
+            
+            padding: 16px 32px;
+            text-decoration: none;
+            
+            cursor: pointer;
+        }
+        .dropdown-content input:hover{
+            
+            
+        }
+        
+        .dropdown-content a:hover {background-color: #ddd;}
+        
+        .dropdown:hover .dropdown-content {display: block;}
+        
+        .dropdown:hover .dropbtn {background-color: black;}
+        </style>
+</head>
+<body style="background-color: black;"> 
+	<nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+
+                    <!-- Header -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="">Cinema Place</a>
+                    </div>
+
+                    <!-- Items -->
+                    <div class="collapse navbar-collapse" id="topNavBar">
+                        <ul class="nav navbar-nav ">
+                            
+                            <li><a href="{% url 'home' %}">&nbsp; Home</a></li>
+                 
+						</ul>
+                        <ul class="nav navbar-nav ">
+                            
+                            <li><a href="{% url 'playlist' %}">&nbsp; Playlist</a></li>
+                 
+						</ul>
+                        <ul class="nav navbar-nav ">
+                            
+                            <li><a href="{% url 'questionnaire_input' %}">&nbsp; Questionnaire</a></li>
+                 
+						</ul>
+					
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                            <li><div class="dropdown">
+                                <button class="dropbtn">Your mood today</button>
+                                <form action="{% url 'home' %}" method="post">
+                                    {% csrf_token %}
+                                <div class="dropdown-content"><center>
+                                    <input style="display:tablr-crll;width:100%" type="submit" value="Tired" name="mood">
+                                    <input style="display:tablr-crll;width:100%" type="submit" value="Happy" name="mood">
+                                    <input style="display:tablr-crll;width:100%" type="submit" value="Sad" name="mood">
+                                    <input style="display:tablr-crll;width:100%" type="submit" value="Inspiration" name="mood">
+                              </div>/center></form></li>
+</form>
+                         {% if not request.user.is_authenticated %}
+                         
+                            <li>
+                                <a href="{% url 'home' %}">
+                                    <span aria-hidden="true"></span>&nbsp; 
+                                    SignUp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'home' %}">
+                                    <span aria-hidden="true"></span>&nbsp; Login
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'logout' %}">
+                                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout 
+                                </a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                    </div>
+
+                </div>
+
+    </nav>
+</div>  
+    {% block body %}
+    {% endblock %}
+     <nav class="navbar navbar-bottom">                   
+    <footer class="page-footer font-small">
+        <hr>
+          <div class="text-center center-block">
+            <br />
+                <a href="https://www.facebook.com/profile.php?id=100004918600612"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                <a href="https://twitter.com/asif536"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                <a href="https://www.linkedin.com/in/mohd-asif-984a35121/"><i class="fa fa-linkedin-square fa-3x social"></i></a>
+                <a href="https://github.com/asif536"><i id="social-git"class="fa fa-github-square fa-3x"></i></a>
+        </div>
+        <hr>
+        <div class="footer-copyright text-center py-3">Group:
+        <a href="#"> 6</a>
+    </div>
+
+    </footer>
+    </nav>
+	<script type="text/javascript" src="{%static 'js/jquery.min.js'%}">
+	</script>
+
+	<script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}">
+	</script>
+    <script type="text/javascript">
+    var $star_rating = $('.star-rating .fa');
+
+    var SetRatingStar = function() {
+        return $star_rating.each(function() {
+        if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+            return $(this).removeClass('fa-star-o').addClass('fa-star');
+        } else {
+        return $(this).removeClass('fa-star').addClass('fa-star-o');
+        }
+        });
+        };
+
+    $star_rating.on('click', function() {
+    $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+    return SetRatingStar();
+    });
+
+    SetRatingStar();
+    $(document).ready(function() {
+
+    });
+        
+</script>
+<script type="text/javascript">
+    function validateForm(){
+    var x = document.forms["ratingForm"]["rating"].value;
+    if(x=="0"){
+        alert("Invalid Input");
+        return false;
+    }
+    }
+</script>
+<script src="{% static "js/multiselect-dropdown.js" %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
+</body>
+</html>
